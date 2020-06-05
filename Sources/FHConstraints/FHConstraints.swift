@@ -13,7 +13,7 @@ public extension UIView {
     ///   - type: The type of constant. The default value is .equalTo.
     ///
     /// - Returns: Returns the created constraint.
-    @discardableResult func constraintLeading(toAnchor anchor: NSLayoutXAxisAnchor, constant: CGFloat = 0, type: ConstraintConstantType = .equalTo) -> NSLayoutConstraint {
+    @discardableResult func constraintLeading(to anchor: NSLayoutXAxisAnchor, constant: CGFloat = 0, type: ConstraintConstantType = .equalTo) -> NSLayoutConstraint {
         self.translatesAutoresizingMaskIntoConstraints = false
         
         let leadingConstraint: NSLayoutConstraint = {
@@ -39,7 +39,7 @@ public extension UIView {
     ///   - type: The type of constant. The default value is .equalTo.
     ///
     /// - Returns: Returns the created constraint.
-    @discardableResult func constraintTop(toAnchor anchor: NSLayoutYAxisAnchor, constant: CGFloat = 0, type: ConstraintConstantType = .equalTo) -> NSLayoutConstraint {
+    @discardableResult func constraintTop(to anchor: NSLayoutYAxisAnchor, constant: CGFloat = 0, type: ConstraintConstantType = .equalTo) -> NSLayoutConstraint {
         self.translatesAutoresizingMaskIntoConstraints = false
         
         let topConstraint: NSLayoutConstraint = {
@@ -65,7 +65,7 @@ public extension UIView {
     ///   - type: The type of constant. The default value is .equalTo.
     ///
     /// - Returns: Returns the created constraint.
-    @discardableResult func constraintTrailing(toAnchor anchor: NSLayoutXAxisAnchor, constant: CGFloat = 0, type: ConstraintConstantType = .equalTo) -> NSLayoutConstraint {
+    @discardableResult func constraintTrailing(to anchor: NSLayoutXAxisAnchor, constant: CGFloat = 0, type: ConstraintConstantType = .equalTo) -> NSLayoutConstraint {
         self.translatesAutoresizingMaskIntoConstraints = false
         
         let trailingConstraint: NSLayoutConstraint = {
@@ -91,7 +91,7 @@ public extension UIView {
     ///   - type: The type of constant. The default value is .equalTo.
     ///
     /// - Returns: Returns the created constraint.
-    @discardableResult func constraintBottom(toAnchor anchor: NSLayoutYAxisAnchor, constant: CGFloat = 0, type: ConstraintConstantType = .equalTo) -> NSLayoutConstraint {
+    @discardableResult func constraintBottom(to anchor: NSLayoutYAxisAnchor, constant: CGFloat = 0, type: ConstraintConstantType = .equalTo) -> NSLayoutConstraint {
         self.translatesAutoresizingMaskIntoConstraints = false
         
         let bottomConstraint: NSLayoutConstraint = {
@@ -117,7 +117,7 @@ public extension UIView {
     ///   - type: The type of constant. The default value is .equalTo.
     ///
     /// - Returns: Returns the created constraint.
-    @discardableResult func constraintCenterX(toAnchor anchor: NSLayoutXAxisAnchor, constant: CGFloat = 0, type: ConstraintConstantType = .equalTo) -> NSLayoutConstraint {
+    @discardableResult func constraintCenterX(to anchor: NSLayoutXAxisAnchor, constant: CGFloat = 0, type: ConstraintConstantType = .equalTo) -> NSLayoutConstraint {
         self.translatesAutoresizingMaskIntoConstraints = false
         
         let centerXConstraint: NSLayoutConstraint = {
@@ -143,7 +143,7 @@ public extension UIView {
     ///   - type: The type of constant. The default value is .equalTo.
     ///
     /// - Returns: Returns the created constraint.
-    @discardableResult func constraintCenterY(toAnchor anchor: NSLayoutYAxisAnchor, constant: CGFloat = 0, type: ConstraintConstantType = .equalTo) -> NSLayoutConstraint {
+    @discardableResult func constraintCenterY(to anchor: NSLayoutYAxisAnchor, constant: CGFloat = 0, type: ConstraintConstantType = .equalTo) -> NSLayoutConstraint {
         self.translatesAutoresizingMaskIntoConstraints = false
         
         let centerYConstraint: NSLayoutConstraint = {
@@ -170,7 +170,7 @@ public extension UIView {
     ///   - type: The type of constant. The default value is .equalTo.
     ///
     /// - Returns: Returns the created constraint.
-    @discardableResult func constraintWidth(toAnchor anchor: NSLayoutDimension, multiplier: CGFloat = 1, constant: CGFloat = 0, type: ConstraintConstantType = .equalTo) -> NSLayoutConstraint {
+    @discardableResult func constraintWidth(to anchor: NSLayoutDimension, multiplier: CGFloat = 1, constant: CGFloat = 0, type: ConstraintConstantType = .equalTo) -> NSLayoutConstraint {
         self.translatesAutoresizingMaskIntoConstraints = false
         
         let widthConstraint: NSLayoutConstraint = {
@@ -195,7 +195,7 @@ public extension UIView {
     ///   - type: The type of constant. The default value is .equalTo.
     ///
     /// - Returns: Returns the created constraint.
-    @discardableResult func constraintWidth(toConstant constant: CGFloat, type: ConstraintConstantType = .equalTo) -> NSLayoutConstraint {
+    @discardableResult func constraintWidth(to constant: CGFloat, type: ConstraintConstantType = .equalTo) -> NSLayoutConstraint {
         self.translatesAutoresizingMaskIntoConstraints = false
         
         let widthConstraint: NSLayoutConstraint = {
@@ -222,7 +222,7 @@ public extension UIView {
     ///   - type: The type of constant. The default value is .equalTo.
     ///
     /// - Returns: Returns the created constraint.
-    @discardableResult func constraintHeight(toAnchor anchor: NSLayoutDimension, multiplier: CGFloat = 1, constant: CGFloat = 0, type: ConstraintConstantType = .equalTo) -> NSLayoutConstraint {
+    @discardableResult func constraintHeight(to anchor: NSLayoutDimension, multiplier: CGFloat = 1, constant: CGFloat = 0, type: ConstraintConstantType = .equalTo) -> NSLayoutConstraint {
         self.translatesAutoresizingMaskIntoConstraints = false
         
         let heightConstraint: NSLayoutConstraint = {
@@ -247,7 +247,7 @@ public extension UIView {
     ///   - type: The type of constant. The default value is .equalTo.
     ///
     /// - Returns: Returns the created constraint.
-    @discardableResult func constraintHeight(toConstant constant: CGFloat, type: ConstraintConstantType = .equalTo) -> NSLayoutConstraint {
+    @discardableResult func constraintHeight(to constant: CGFloat, type: ConstraintConstantType = .equalTo) -> NSLayoutConstraint {
         self.translatesAutoresizingMaskIntoConstraints = false
         
         let heightConstraint: NSLayoutConstraint = {
@@ -318,27 +318,27 @@ public extension UIView {
         var constraints = ViewConstraints()
         
         if let leading = leading {
-            constraints.leadingConstraint = self.constraintLeading(toAnchor: leading, constant: leadingConstant)
+            constraints.leadingConstraint = self.constraintLeading(to: leading, constant: leadingConstant)
         }
         
         if let top = top {
-            constraints.topConstraint = self.constraintTop(toAnchor: top, constant: topConstant)
+            constraints.topConstraint = self.constraintTop(to: top, constant: topConstant)
         }
         
         if let trailing = trailing {
-            constraints.trailingConstraint = self.constraintTrailing(toAnchor: trailing, constant: trailingConstant)
+            constraints.trailingConstraint = self.constraintTrailing(to: trailing, constant: trailingConstant)
         }
         
         if let bottom = bottom {
-            constraints.bottomConstraint = self.constraintBottom(toAnchor: bottom, constant: bottomConstant)
+            constraints.bottomConstraint = self.constraintBottom(to: bottom, constant: bottomConstant)
         }
         
         if let width = width {
-            constraints.widhtConstraint = self.constraintWidth(toConstant: width)
+            constraints.widhtConstraint = self.constraintWidth(to: width)
         }
         
         if let height = height {
-            constraints.heightConstraint = self.constraintHeight(toConstant: height)
+            constraints.heightConstraint = self.constraintHeight(to: height)
         }
         
         return constraints
@@ -349,11 +349,11 @@ public extension UIView {
     /// - Parameter view: View to constraint to.
     ///
     /// - Returns: Returns all created constraints.
-    @discardableResult func constraint(toCenterOfView view: UIView) -> ViewConstraints {
+    @discardableResult func constraint(toCenterOf view: UIView) -> ViewConstraints {
         var constraints = ViewConstraints()
         
-        constraints.centerXConstraint = self.constraintCenterX(toAnchor: view.centerXAnchor)
-        constraints.centerYConstraint = self.constraintCenterY(toAnchor: view.centerYAnchor)
+        constraints.centerXConstraint = self.constraintCenterX(to: view.centerXAnchor)
+        constraints.centerYConstraint = self.constraintCenterY(to: view.centerYAnchor)
         
         return constraints
     }
@@ -363,13 +363,13 @@ public extension UIView {
     /// - Parameter inset: Inset arround the view.
     ///
     /// - Returns: Returns all created constraints.
-    @discardableResult func constraint(onTopOfView view: UIView, inset: UIEdgeInsets = UIEdgeInsets(top: 0, left: 0, bottom: 0, right: 0)) -> ViewConstraints {
+    @discardableResult func constraint(onTopOf view: UIView, inset: UIEdgeInsets = UIEdgeInsets(top: 0, left: 0, bottom: 0, right: 0)) -> ViewConstraints {
         var constraints = ViewConstraints()
         
-        constraints.leadingConstraint = self.constraintLeading(toAnchor: view.leadingAnchor, constant: inset.left)
-        constraints.topConstraint = self.constraintTop(toAnchor: view.topAnchor, constant: inset.top)
-        constraints.trailingConstraint = self.constraintTrailing(toAnchor: view.trailingAnchor, constant: -inset.right)
-        constraints.bottomConstraint = self.constraintBottom(toAnchor: view.bottomAnchor, constant: -inset.bottom)
+        constraints.leadingConstraint = self.constraintLeading(to: view.leadingAnchor, constant: inset.left)
+        constraints.topConstraint = self.constraintTop(to: view.topAnchor, constant: inset.top)
+        constraints.trailingConstraint = self.constraintTrailing(to: view.trailingAnchor, constant: -inset.right)
+        constraints.bottomConstraint = self.constraintBottom(to: view.bottomAnchor, constant: -inset.bottom)
         
         return constraints
     }
@@ -393,21 +393,21 @@ public extension UIView {
     ///   - position: Constraint position. Default state is firstConrer.
     ///   - size: You can optionally give the view a size. Default value is nil.
     ///   - equalDimension: By setting this value to true, the view get's the same size. The size parameter is then ignored. Default value is false.
-    func constraint(toView view: UIView, onSide side: ViewConstraintSide, spacing: CGFloat = 0, position: ViewConstraintPosition = .firstCorner, size: CGSize? = nil, equalDimension: Bool = false) {
+    func constraint(to view: UIView, onSide side: ViewConstraintSide, spacing: CGFloat = 0, position: ViewConstraintPosition = .firstCorner, size: CGSize? = nil, equalDimension: Bool = false) {
         self.translatesAutoresizingMaskIntoConstraints = false
         
         if let size = size, !equalDimension {
-            self.constraintWidth(toConstant: size.width)
-            self.constraintHeight(toConstant: size.height)
+            self.constraintWidth(to: size.width)
+            self.constraintHeight(to: size.height)
         }
         
         switch side {
         case .top, .bottom:
             if side == .top {
-                self.constraintBottom(toAnchor: view.topAnchor, constant: -spacing)
+                self.constraintBottom(to: view.topAnchor, constant: -spacing)
             }
             if side == .bottom {
-                self.constraintTop(toAnchor: view.bottomAnchor, constant: spacing)
+                self.constraintTop(to: view.bottomAnchor, constant: spacing)
             }
             
             if equalDimension {
@@ -415,23 +415,23 @@ public extension UIView {
                     leading: view.leadingAnchor,
                     trailing: view.trailingAnchor
                 )
-                self.constraintHeight(toAnchor: view.heightAnchor)
+                self.constraintHeight(to: view.heightAnchor)
             } else {
                 switch position {
                 case .firstCorner:
-                    self.constraintLeading(toAnchor: view.leadingAnchor)
+                    self.constraintLeading(to: view.leadingAnchor)
                 case .center:
-                    self.constraintCenterX(toAnchor: view.centerXAnchor)
+                    self.constraintCenterX(to: view.centerXAnchor)
                 case .secondCorner:
-                    self.constraintTrailing(toAnchor: view.trailingAnchor)
+                    self.constraintTrailing(to: view.trailingAnchor)
                 }
             }
         case .left, .right:
             if side == .left {
-                self.constraintTrailing(toAnchor: view.leadingAnchor, constant: -spacing)
+                self.constraintTrailing(to: view.leadingAnchor, constant: -spacing)
             }
             if side == .right {
-                self.constraintLeading(toAnchor: view.trailingAnchor, constant: spacing)
+                self.constraintLeading(to: view.trailingAnchor, constant: spacing)
             }
             
             if equalDimension {
@@ -439,15 +439,15 @@ public extension UIView {
                     top: view.topAnchor,
                     bottom: view.bottomAnchor
                 )
-                self.constraintWidth(toAnchor: view.widthAnchor)
+                self.constraintWidth(to: view.widthAnchor)
             } else {
                 switch position {
                 case .firstCorner:
-                    self.constraintTop(toAnchor: view.topAnchor)
+                    self.constraintTop(to: view.topAnchor)
                 case .center:
-                    self.constraintCenterY(toAnchor: view.centerYAnchor)
+                    self.constraintCenterY(to: view.centerYAnchor)
                 case .secondCorner:
-                    self.constraintBottom(toAnchor: view.bottomAnchor)
+                    self.constraintBottom(to: view.bottomAnchor)
                 }
             }
         }
