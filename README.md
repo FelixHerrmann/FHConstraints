@@ -3,7 +3,7 @@
 <p align="left">
 <a href="https://github.com/FelixHerrmann/FHConstraints/releases"><img alt="GitHub version" src="https://img.shields.io/github/v/release/FelixHerrmann/FHConstraints"></a>
 <a href="https://github.com/FelixHerrmann/FHConstraints/blob/master/LICENSE"><img alt="GitHub license" src="https://img.shields.io/github/license/FelixHerrmann/FHConstraints"></a>
-<a href="https://twitter.com/intent/tweet?text=Wow:&url=https%3A%2F%2Fgithub.com%2FFelixHerrmann%2FFHConstraints"><img alt="Twitter" src="https://img.shields.io/twitter/url?style=social"></a>
+<a href="https://twitter.com/intent/tweet?text=Wow:&url=https%3A%2F%2Fgithub.com%2FFelixHerrmann%2FFHConstraints"><img alt="Twitter" src="https://img.shields.io/twitter/url?style=social&url=https%3A%2F%2Fgithub.com%2FFelixHerrmann%2FFHConstraints"></a>
 </p>
 
 FHConstraints is an extension for the UIView class with usefull constraint methodes.
