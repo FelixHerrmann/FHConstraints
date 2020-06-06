@@ -13,7 +13,7 @@ Theses methodes simplify the build-in constraint methodes.
 
 Instead of: 
 ```swift
-subview.translatesAutoresizingMaskIntoConstraints = true
+subview.translatesAutoresizingMaskIntoConstraints = false
 subview.leadingAnchor.constraint(equalTo: view.leadingAnchor).isActive = true
 subview.trailingAnchor.constraint(lessThanOrEqualTo: view.trailingAnchor, constant: -10).isActive = true
 subview.centerYAnchor.constraint(equalTo: view.centerYAnchor, constant: 5).isActive = true
