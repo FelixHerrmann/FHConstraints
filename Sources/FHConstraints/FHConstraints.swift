@@ -269,16 +269,16 @@ public extension UIView {
     
     /// Contains all constraints a view can have.
     struct ViewConstraints {
-        var leadingConstraint: NSLayoutConstraint?
-        var topConstraint: NSLayoutConstraint?
-        var trailingConstraint: NSLayoutConstraint?
-        var bottomConstraint: NSLayoutConstraint?
-        var centerXConstraint: NSLayoutConstraint?
-        var centerYConstraint: NSLayoutConstraint?
-        var widhtConstraint: NSLayoutConstraint?
-        var heightConstraint: NSLayoutConstraint?
+        public var leadingConstraint: NSLayoutConstraint?
+        public var topConstraint: NSLayoutConstraint?
+        public var trailingConstraint: NSLayoutConstraint?
+        public var bottomConstraint: NSLayoutConstraint?
+        public var centerXConstraint: NSLayoutConstraint?
+        public var centerYConstraint: NSLayoutConstraint?
+        public var widhtConstraint: NSLayoutConstraint?
+        public var heightConstraint: NSLayoutConstraint?
         
-        var all: [NSLayoutConstraint?] {
+        public var all: [NSLayoutConstraint?] {
             return [
                 leadingConstraint,
                 topConstraint,
