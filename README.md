@@ -6,8 +6,8 @@
 <a href="https://twitter.com/intent/tweet?text=Wow:&url=https%3A%2F%2Fgithub.com%2FFelixHerrmann%2FFHConstraints"><img alt="Twitter" src="https://img.shields.io/twitter/url?style=social&url=https%3A%2F%2Fgithub.com%2FFelixHerrmann%2FFHConstraints"></a>
 </p>
 
-FHConstraints is an extension for the UIView class with usefull constraint methodes.
-Theses methodes simplify the build-in constraint methodes.
+FHConstraints is an extension for the UIView class with usefull constraint methods.
+Theses methods simplify the build-in constraint methods.
 
 ## Usage
 
@@ -27,11 +27,11 @@ subview.constraintTrailing(to: view.trailingAnchor, constant: -10, type: .lessTh
 subview.constraintCenterY(to: view.centerYAnchor, constant: 5)
 subview.constraintHeight(to: view.heightAnchor, multiplier: 1.5, constant: 20, type: .greaterThanOrEqualTo)
 ```
->All of theses methodes will return the created constraint.
+>All of these methods will return the created constraint.
 
-### Convenience Methodes
+### Convenience Methods
 
-Combined constraining methode:
+Combined constraining method:
 ```swift
 subview.constraint(
     leading: view.leadingAnchor, leadingConstant: 10,
@@ -42,7 +42,7 @@ subview.constraint(
 )
 ```
 
-Shortcut methodes:
+Shortcut methods:
 ```swift
 subview.constraint(toCenterOf: view)
 ```
