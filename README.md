@@ -19,7 +19,7 @@ Theses methods simplify the build-in constraint methods.
 
 ### [Swift Package Manager](https://swift.org/package-manager/)
 
-Add the following to the dependencies of your `Package.swift:
+Add the following to the dependencies of your `Package.swift`:
 
 ```swift
 .package(url: "https://github.com/FelixHerrmann/FHConstraints", from: "x.x.x")
