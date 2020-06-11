@@ -9,7 +9,32 @@
 FHConstraints is an extension for the UIView class with usefull constraint methods.
 Theses methods simplify the build-in constraint methods.
 
+## Requirements
+- macOS 10.15+ (Catalyst)
+- iOS 9.0+
+- tvOS 9.0+
+- watchOS 2.0+
+
+## Installation
+
+### [Swift Package Manager](https://swift.org/package-manager/)
+
+Add the following to the dependencies of your `Package.swift:
+
+```swift
+.package(url: "https://github.com/FelixHerrmann/FHConstraints", from: "x.x.x")
+```
+
+### Manual
+
+Download the files in the `Sources` folder and drag them into you project.
+
 ## Usage
+
+If you are using Swift Package Manager then you have to import FHConstraints to your file with `import FHConstraints`.
+You can also import it globally with `@_exported import FHConstraints`. (e.g. in `AppDelegate.swift`)
+
+<br>
 
 Instead of: 
 ```swift
