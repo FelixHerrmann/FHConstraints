@@ -27,7 +27,7 @@ Add the following to the dependencies of your `Package.swift`:
 
 ### Manual
 
-Download the files in the `Sources` folder and drag them into you project.
+Download the files in the [Sources](https://github.com/FelixHerrmann/FHConstraints/tree/master/Sources) folder and drag them into you project.
 
 ## Usage
 
