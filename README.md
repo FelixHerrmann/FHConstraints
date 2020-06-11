@@ -31,7 +31,7 @@ Download the files in the [Sources](https://github.com/FelixHerrmann/FHConstrain
 
 ## Usage
 
-If you are using Swift Package Manager then you have to import FHConstraints to your file with `import FHConstraints`.
+If you are using Swift Package Manager, you have to import FHConstraints to your file with `import FHConstraints`.
 You can also import it globally with `@_exported import FHConstraints`. (e.g. in `AppDelegate.swift`)
 
 <br>
