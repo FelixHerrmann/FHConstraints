@@ -13,7 +13,6 @@ Theses methods simplify the build-in constraint methods.
 - macOS 10.15+ (Catalyst)
 - iOS 9.0+
 - tvOS 9.0+
-- watchOS 2.0+
 
 ## Installation
 
