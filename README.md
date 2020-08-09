@@ -21,7 +21,7 @@ Theses methods simplify the build-in constraint methods.
 Add the following to the dependencies of your `Package.swift`:
 
 ```swift
-.package(url: "https://github.com/FelixHerrmann/FHConstraints", from: "x.x.x")
+.package(url: "https://github.com/FelixHerrmann/FHConstraints.git", from: "x.x.x")
 ```
 
 ### Manual
