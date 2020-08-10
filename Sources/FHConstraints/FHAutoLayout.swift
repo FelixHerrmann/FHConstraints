@@ -12,7 +12,7 @@ extension UILayoutGuide: FHAutoLayout {
 }
 
 extension FHAutoLayout {
-    typealias EdgeInsets = UIEdgeInsets
+    public typealias EdgeInsets = UIEdgeInsets
 }
 
 #elseif canImport(AppKit)
@@ -25,7 +25,7 @@ extension NSView: FHAutoLayout {
 }
 
 extension FHAutoLayout {
-    typealias EdgeInsets = NSEdgeInsets
+    public typealias EdgeInsets = NSEdgeInsets
 }
 
 #endif
