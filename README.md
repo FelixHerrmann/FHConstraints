@@ -50,7 +50,7 @@ you will use:
 subview.constraint(.leading(to: view.leadingAnchor))
 subview.constraint(.trailing(to: view.trailingAnchor, .lessThanOrEqual(to: -10)))
 subview.constraint(.centerY(to: view.centerYAnchor, .equal(to: 5)))
-subview.constraint(.heightTo(view.heightAnchor, .greaterThanOrEqualTo(multiplier: 1.5, constant: 20)))
+subview.constraint(.height(to: view.heightAnchor, .greaterThanOrEqualTo(multiplier: 1.5, constant: 20)))
 ```
 >All of these methods will return the created constraint.
 
@@ -62,7 +62,7 @@ subview.constraint([
     .leading(to: view.leadingAnchor),
     .trailing(to: view.trailingAnchor, .lessThanOrEqual(to: -10)),
     .centerY(to: view.centerYAnchor, .equal(to: 5)),
-    .heightTo(view.heightAnchor, .greaterThanOrEqualTo(multiplier: 1.5, constant: 20))
+    .height(to: view.heightAnchor, .greaterThanOrEqualTo(multiplier: 1.5, constant: 20))
 ])
 ```
 

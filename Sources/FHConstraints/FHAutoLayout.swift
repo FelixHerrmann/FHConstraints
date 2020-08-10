@@ -170,7 +170,7 @@ extension FHAutoLayout {
             case .greaterThanOrEqual(to: let constant):
                 constraint = centerYAnchor.constraint(greaterThanOrEqualTo: yAxisAnchor, constant: constant)
             }
-        case .widthTo(let dimension, let dimensionConstantType):
+        case .width(to: let dimension, let dimensionConstantType):
             switch dimensionConstantType {
             case .equalTo(multiplier: let multiplier, constant: let constant):
                 constraint = widthAnchor.constraint(equalTo: dimension, multiplier: multiplier, constant: constant)
@@ -179,7 +179,7 @@ extension FHAutoLayout {
             case .greaterThanOrEqualTo(multiplier: let multiplier, constant: let constant):
                 constraint = widthAnchor.constraint(greaterThanOrEqualTo: dimension, multiplier: multiplier, constant: constant)
             }
-        case .width(let constantType):
+        case .widthConstant(let constantType):
             switch constantType {
             case .equal(to: let constant):
                 constraint = heightAnchor.constraint(equalToConstant: constant)
@@ -188,7 +188,7 @@ extension FHAutoLayout {
             case .greaterThanOrEqual(to: let constant):
                 constraint = heightAnchor.constraint(greaterThanOrEqualToConstant: constant)
             }
-        case .heightTo(let dimension, let dimensionConstantType):
+        case .height(to: let dimension, let dimensionConstantType):
             switch dimensionConstantType {
             case .equalTo(multiplier: let multiplier, constant: let constant):
                 constraint = heightAnchor.constraint(equalTo: dimension, multiplier: multiplier, constant: constant)
@@ -197,7 +197,7 @@ extension FHAutoLayout {
             case .greaterThanOrEqualTo(multiplier: let multiplier, constant: let constant):
                 constraint = heightAnchor.constraint(greaterThanOrEqualTo: dimension, multiplier: multiplier, constant: constant)
             }
-        case .height(let constantType):
+        case .heightConstant(let constantType):
             switch constantType {
             case .equal(to: let constant):
                 constraint = heightAnchor.constraint(equalToConstant: constant)

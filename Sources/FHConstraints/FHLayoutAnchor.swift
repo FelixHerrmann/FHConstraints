@@ -29,8 +29,8 @@ public enum FHLayoutAnchor: Hashable {
     case bottom(to: NSLayoutYAxisAnchor, _ constantType: ConstantType = .equal(to: 0))
     case centerX(to: NSLayoutXAxisAnchor, _ constantType: ConstantType = .equal(to: 0))
     case centerY(to: NSLayoutYAxisAnchor, _ constantType: ConstantType = .equal(to: 0))
-    case widthTo(NSLayoutDimension, _ constantType: DimensionConstantType = .equalTo())
-    case width(_ constantType: ConstantType)
-    case heightTo(NSLayoutDimension, _ constantType: DimensionConstantType = .equalTo())
-    case height(_ constantType: ConstantType)
+    case width(to: NSLayoutDimension, _ constantType: DimensionConstantType = .equalTo())
+    case widthConstant(_ constantType: ConstantType)
+    case height(to: NSLayoutDimension, _ constantType: DimensionConstantType = .equalTo())
+    case heightConstant(_ constantType: ConstantType)
 }
