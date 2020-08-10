@@ -68,7 +68,7 @@ extension FHAutoLayout {
     /// Centers this view to the parsed view.
     /// - Parameter view: View to constraint to.
     /// - Returns: Returns all created constraints in the following order: [centerX, centerY]
-    @discardableResult func constraint(toCenterOf view: FHAutoLayout) -> [NSLayoutConstraint] {
+    @discardableResult public func constraint(toCenterOf view: FHAutoLayout) -> [NSLayoutConstraint] {
         var constraints = [NSLayoutConstraint]()
         
         constraints.append(constraint(.centerX(to: view.centerXAnchor)))
@@ -81,7 +81,7 @@ extension FHAutoLayout {
     /// - Parameter view: The view to constraint to.
     /// - Parameter inset: Inset arround the view.
     /// - Returns: Returns all created constraints in the following order: [leading, top, trailing, bottom]
-    @discardableResult func constraint(onTopOf view: FHAutoLayout, inset: EdgeInsets = EdgeInsets(top: 0, left: 0, bottom: 0, right: 0)) -> [NSLayoutConstraint] {
+    @discardableResult public func constraint(onTopOf view: FHAutoLayout, inset: EdgeInsets = EdgeInsets(top: 0, left: 0, bottom: 0, right: 0)) -> [NSLayoutConstraint] {
         var constraints = [NSLayoutConstraint]()
         
         constraints.append(constraint(.leading(to: view.leadingAnchor, .equal(to: inset.left))))
