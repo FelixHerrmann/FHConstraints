@@ -10,6 +10,7 @@ FHConstraints is an extension for the UIView class with usefull constraint metho
 Theses methods simplify the build-in constraint methods.
 
 ## Requirements
+- macOS 10.11
 - macOS 10.15+ (Catalyst)
 - iOS 9.0+
 - tvOS 9.0+
@@ -46,10 +47,10 @@ subview.heightAnchor.constraint(greaterThanOrEqualTo: view.heightAnchor, multipl
 
 you will use:
 ```swift
-subview.constraintLeading(to: view.leadingAnchor)
-subview.constraintTrailing(to: view.trailingAnchor, constant: -10, type: .lessThanOrEqualTo)
-subview.constraintCenterY(to: view.centerYAnchor, constant: 5)
-subview.constraintHeight(to: view.heightAnchor, multiplier: 1.5, constant: 20, type: .greaterThanOrEqualTo)
+subview.constraint(.leading(to: view.leadingAnchor))
+subview.constraint(.trailing(to: view.trailingAnchor, .lessThanOrEqual(to: -10)))
+subview.constraint(.centerY(to: view.centerYAnchor, .equal(to: 5)))
+subview.constraint(.heightTo(view.heightAnchor, .greaterThanOrEqualTo(multiplier: 1.5, constant: 20)))
 ```
 >All of these methods will return the created constraint.
 
@@ -57,13 +58,12 @@ subview.constraintHeight(to: view.heightAnchor, multiplier: 1.5, constant: 20, t
 
 Combined constraining method:
 ```swift
-subview.constraint(
-    leading: view.leadingAnchor, leadingConstant: 10,
-    top: view.topAnchor,
-    trailing: view.trailingAnchor, trailingConstant: -10,
-    bottom: view.bottomAnchor, bottomConstant: -20,
-    width: 30, height: 30
-)
+subview.constraint([
+    .leading(to: view.leadingAnchor),
+    .trailing(to: view.trailingAnchor, .lessThanOrEqual(to: -10)),
+    .centerY(to: view.centerYAnchor, .equal(to: 5)),
+    .heightTo(view.heightAnchor, .greaterThanOrEqualTo(multiplier: 1.5, constant: 20))
+])
 ```
 
 Shortcut methods:
@@ -72,18 +72,6 @@ subview.constraint(toCenterOf: view)
 ```
 ```swift
 subview.constraint(onTopOf: view)
-```
-
-Different constraint system:
-```swift
-subview.constraint(
-    to: view,
-    onSide: .left,
-    spacing: 10,
-    position: .firstCorner,
-    size: CGSize(width: 10, height: 10),
-    equalDimension: false
-)
 ```
 
 ## License
