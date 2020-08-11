@@ -1,37 +1,33 @@
 #if canImport(UIKit)
 import UIKit
 
-extension UIView: FHAutoLayout {
+public typealias EdgeInsets = UIEdgeInsets
+
+extension UIView: FHLayoutItem {
     public func enableAutoLayout() {
         translatesAutoresizingMaskIntoConstraints = false
     }
 }
 
-extension UILayoutGuide: FHAutoLayout {
+extension UILayoutGuide: FHLayoutItem {
     public func enableAutoLayout() { }
-}
-
-extension FHAutoLayout {
-    public typealias EdgeInsets = UIEdgeInsets
 }
 
 #elseif canImport(AppKit)
 import AppKit
 
-extension NSView: FHAutoLayout {
+public typealias EdgeInsets = NSEdgeInsets
+
+extension NSView: FHLayoutItem {
     public func enableAutoLayout() {
         translatesAutoresizingMaskIntoConstraints = false
     }
 }
 
-extension FHAutoLayout {
-    public typealias EdgeInsets = NSEdgeInsets
-}
-
 #endif
 
 /// FHAutoLayout protocol
-public protocol FHAutoLayout {
+public protocol FHLayoutItem {
     var leadingAnchor: NSLayoutXAxisAnchor { get }
     var trailingAnchor: NSLayoutXAxisAnchor { get }
     var leftAnchor: NSLayoutXAxisAnchor { get }
@@ -47,7 +43,7 @@ public protocol FHAutoLayout {
     func enableAutoLayout()
 }
 
-extension FHAutoLayout {
+extension FHLayoutItem {
     /// Creates and activates the constraint from the `anchor` parameter.
     /// - Parameter anchor: The anchor from which the constraint should be created.
     /// - Returns: Returns the created `NSLayoutConstraint`.
@@ -56,44 +52,22 @@ extension FHAutoLayout {
         return _createAndActivateConstraint(fromAnchor: anchor)
     }
     
-    /// Creates and activates the constraints from the `anchor` parameter.
+    /// Creates and activates the constraints from the `anchors` parameter.
     /// - Parameter anchors: The array of anchors from which the constraints should be created.
     /// - Returns: Returns the created `NSLayoutConstraint`s. The order matches the anchors order.
     @discardableResult public func constraint(_ anchors: [FHLayoutAnchor]) -> [NSLayoutConstraint] {
         return anchors.map({ constraint($0) })
     }
-}
-
-extension FHAutoLayout {
-    /// Centers this view to the parsed view.
-    /// - Parameter view: View to constraint to.
-    /// - Returns: Returns all created constraints in the following order: [centerX, centerY]
-    @discardableResult public func constraint(toCenterOf view: FHAutoLayout) -> [NSLayoutConstraint] {
-        var constraints = [NSLayoutConstraint]()
-        
-        constraints.append(constraint(.centerX(to: view.centerXAnchor)))
-        constraints.append(constraint(.centerY(to: view.centerYAnchor)))
-        
-        return constraints
-    }
     
-    /// Constraints the view on top of the parsed view.
-    /// - Parameter view: The view to constraint to.
-    /// - Parameter inset: Inset arround the view.
-    /// - Returns: Returns all created constraints in the following order: [leading, top, trailing, bottom]
-    @discardableResult public func constraint(onTopOf view: FHAutoLayout, inset: EdgeInsets = EdgeInsets(top: 0, left: 0, bottom: 0, right: 0)) -> [NSLayoutConstraint] {
-        var constraints = [NSLayoutConstraint]()
-        
-        constraints.append(constraint(.leading(to: view.leadingAnchor, .equal(to: inset.left))))
-        constraints.append(constraint(.top(to: view.topAnchor, .equal(to: inset.top))))
-        constraints.append(constraint(.trailing(to: view.trailingAnchor, .equal(to: -inset.right))))
-        constraints.append(constraint(.bottom(to: view.bottomAnchor, .equal(to: -inset.bottom))))
-        
-        return constraints
+    /// Creates and activates the from the `convenienceAnchors` parameter defined constraints.
+    /// - Parameter convenienceAnchors: The convenciene anchor type.
+    /// - Returns: Returns the created `NSLayoutConstraint`s.
+    @discardableResult public func constraint(_ convenienceAnchors: FHConvenienceAnchors) -> [NSLayoutConstraint] {
+        return convenienceAnchors._constraint(layoutItem: self)
     }
 }
 
-extension FHAutoLayout {
+extension FHLayoutItem {
     private func _createAndActivateConstraint(fromAnchor anchor: FHLayoutAnchor) -> NSLayoutConstraint {
         let constraint: NSLayoutConstraint
         
@@ -170,14 +144,14 @@ extension FHAutoLayout {
             case .greaterThanOrEqual(to: let constant):
                 constraint = centerYAnchor.constraint(greaterThanOrEqualTo: yAxisAnchor, constant: constant)
             }
-        case .width(to: let dimension, let dimensionConstantType):
-            switch dimensionConstantType {
-            case .equalTo(multiplier: let multiplier, constant: let constant):
-                constraint = widthAnchor.constraint(equalTo: dimension, multiplier: multiplier, constant: constant)
-            case .lessThanOrEqualTo(multiplier: let multiplier, constant: let constant):
-                constraint = widthAnchor.constraint(lessThanOrEqualTo: dimension, multiplier: multiplier, constant: constant)
-            case .greaterThanOrEqualTo(multiplier: let multiplier, constant: let constant):
-                constraint = widthAnchor.constraint(greaterThanOrEqualTo: dimension, multiplier: multiplier, constant: constant)
+        case .width(to: let dimension, let constantType):
+            switch constantType {
+            case .equal(to: let dimensionConstant):
+                constraint = widthAnchor.constraint(equalTo: dimension, multiplier: dimensionConstant.multiplier, constant: dimensionConstant.constant)
+            case .lessThanOrEqual(to: let dimensionConstant):
+                constraint = widthAnchor.constraint(lessThanOrEqualTo: dimension, multiplier: dimensionConstant.multiplier, constant: dimensionConstant.constant)
+            case .greaterThanOrEqual(to: let dimensionConstant):
+                constraint = widthAnchor.constraint(greaterThanOrEqualTo: dimension, multiplier: dimensionConstant.multiplier, constant: dimensionConstant.constant)
             }
         case .widthConstant(let constantType):
             switch constantType {
@@ -188,15 +162,15 @@ extension FHAutoLayout {
             case .greaterThanOrEqual(to: let constant):
                 constraint = heightAnchor.constraint(greaterThanOrEqualToConstant: constant)
             }
-        case .height(to: let dimension, let dimensionConstantType):
-            switch dimensionConstantType {
-            case .equalTo(multiplier: let multiplier, constant: let constant):
-                constraint = heightAnchor.constraint(equalTo: dimension, multiplier: multiplier, constant: constant)
-            case .lessThanOrEqualTo(multiplier: let multiplier, constant: let constant):
-                constraint = heightAnchor.constraint(lessThanOrEqualTo: dimension, multiplier: multiplier, constant: constant)
-            case .greaterThanOrEqualTo(multiplier: let multiplier, constant: let constant):
-                constraint = heightAnchor.constraint(greaterThanOrEqualTo: dimension, multiplier: multiplier, constant: constant)
-            }
+        case .height(to: let dimension, let constantType):
+        switch constantType {
+        case .equal(to: let dimensionConstant):
+            constraint = heightAnchor.constraint(equalTo: dimension, multiplier: dimensionConstant.multiplier, constant: dimensionConstant.constant)
+        case .lessThanOrEqual(to: let dimensionConstant):
+            constraint = heightAnchor.constraint(lessThanOrEqualTo: dimension, multiplier: dimensionConstant.multiplier, constant: dimensionConstant.constant)
+        case .greaterThanOrEqual(to: let dimensionConstant):
+            constraint = heightAnchor.constraint(greaterThanOrEqualTo: dimension, multiplier: dimensionConstant.multiplier, constant: dimensionConstant.constant)
+        }
         case .heightConstant(let constantType):
             switch constantType {
             case .equal(to: let constant):

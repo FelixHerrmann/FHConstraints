@@ -50,7 +50,7 @@ you will use:
 subview.constraint(.leading(to: view.leadingAnchor))
 subview.constraint(.trailing(to: view.trailingAnchor, .lessThanOrEqual(to: -10)))
 subview.constraint(.centerY(to: view.centerYAnchor, .equal(to: 5)))
-subview.constraint(.height(to: view.heightAnchor, .greaterThanOrEqualTo(multiplier: 1.5, constant: 20)))
+subview.constraint(.height(to: view.heightAnchor, .greaterThanOrEqual(to: FHLayoutAnchor.DimensionConstant(multiplier: 1.5, constant: 20))))
 ```
 >All of these methods will return the created constraint.
 
@@ -62,16 +62,19 @@ subview.constraint([
     .leading(to: view.leadingAnchor),
     .trailing(to: view.trailingAnchor, .lessThanOrEqual(to: -10)),
     .centerY(to: view.centerYAnchor, .equal(to: 5)),
-    .height(to: view.heightAnchor, .greaterThanOrEqualTo(multiplier: 1.5, constant: 20))
+    .height(to: view.heightAnchor, .greaterThanOrEqual(to: FHLayoutAnchor.DimensionConstant(multiplier: 1.5, constant: 20)))
 ])
 ```
 
 Shortcut methods:
 ```swift
-subview.constraint(toCenterOf: view)
+subview.constraint(.insideOf(view, insets: .equal(to: EdgeInsets(top: 0, left: 0, bottom: 0, right: 0))))
 ```
 ```swift
-subview.constraint(onTopOf: view)
+subview.constraint(.toCenterOf(view, offset: .equal(to: FHConvenienceAnchors.Offset(horizontal: 0, vertical: 0))))
+```
+```swift
+subview.constraint(.size(.equal(to: CGSize(width: 0, height: 0)))
 ```
 
 ## License
