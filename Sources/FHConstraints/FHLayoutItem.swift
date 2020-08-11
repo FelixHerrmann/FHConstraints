@@ -156,11 +156,11 @@ extension FHLayoutItem {
         case .widthConstant(let constantType):
             switch constantType {
             case .equal(to: let constant):
-                constraint = heightAnchor.constraint(equalToConstant: constant)
+                constraint = widthAnchor.constraint(equalToConstant: constant)
             case .lessThanOrEqual(to: let constant):
-                constraint = heightAnchor.constraint(lessThanOrEqualToConstant: constant)
+                constraint = widthAnchor.constraint(lessThanOrEqualToConstant: constant)
             case .greaterThanOrEqual(to: let constant):
-                constraint = heightAnchor.constraint(greaterThanOrEqualToConstant: constant)
+                constraint = widthAnchor.constraint(greaterThanOrEqualToConstant: constant)
             }
         case .height(to: let dimension, let constantType):
         switch constantType {
