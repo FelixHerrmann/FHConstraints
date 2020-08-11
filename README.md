@@ -68,10 +68,10 @@ subview.constraint([
 
 Shortcut methods:
 ```swift
-subview.constraint(.insideOf(view, insets: .equal(to: EdgeInsets(top: 0, left: 0, bottom: 0, right: 0))))
+subview.constraint(.inside(of: view, insets: .equal(to: EdgeInsets(top: 0, left: 0, bottom: 0, right: 0))))
 ```
 ```swift
-subview.constraint(.toCenterOf(view, offset: .equal(to: FHConvenienceAnchors.Offset(horizontal: 0, vertical: 0))))
+subview.constraint(.toCenter(of: view, offset: .equal(to: FHConvenienceAnchors.Offset(horizontal: 0, vertical: 0))))
 ```
 ```swift
 subview.constraint(.size(.equal(to: CGSize(width: 0, height: 0)))

@@ -9,12 +9,12 @@ public enum FHConvenienceAnchors {
     /// Constraints the layout item inside of the parsed layout item with optional insets.
     ///
     /// The returned constraint order is: [leading, top, trailing, bottom]
-    case insideOf(_ layoutItem: FHLayoutItem, insets: FHLayoutConstantType<EdgeInsets> = .equal(to: EdgeInsets()))
+    case inside(of: FHLayoutItem, insets: FHLayoutConstantType<EdgeInsets> = .equal(to: EdgeInsets()))
     
     /// Constraints the layout item to the center of the parsed layout item with optional offset.
     ///
     /// The returned constraint order is: [centerX, centerY]
-    case toCenterOf(_ layoutItem: FHLayoutItem, offset: FHLayoutConstantType<Offset> = .equal(to: Offset()))
+    case toCenter(of: FHLayoutItem, offset: FHLayoutConstantType<Offset> = .equal(to: Offset()))
     
     /// Constraints the layout item to the parsed size.
     ///
@@ -39,7 +39,7 @@ extension FHConvenienceAnchors {
 extension FHConvenienceAnchors {
     internal func _constraint(layoutItem: FHLayoutItem) -> [NSLayoutConstraint] {
         switch self {
-        case .insideOf(let superLayoutItem, insets: let insetsType):
+        case .inside(of: let superLayoutItem, insets: let insetsType):
             switch insetsType {
             case .equal(to: let insets):
                 return layoutItem.constraint([
@@ -63,7 +63,7 @@ extension FHConvenienceAnchors {
                     .bottom(to: superLayoutItem.bottomAnchor, .lessThanOrEqual(to: -insets.bottom))
                 ])
             }
-        case .toCenterOf(let superLayoutItem, offset: let offsetType):
+        case .toCenter(of: let superLayoutItem, offset: let offsetType):
             switch offsetType {
             case .equal(to: let offset):
                 return layoutItem.constraint([
