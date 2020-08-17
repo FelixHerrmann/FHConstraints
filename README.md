@@ -66,6 +66,8 @@ subview.constraint([
 ])
 ```
 
+<br>
+
 Shortcut methods:
 ```swift
 subview.constraint(.inside(of: view, insets: .equal(to: EdgeInsets(top: 0, left: 0, bottom: 0, right: 0))))
@@ -76,6 +78,8 @@ subview.constraint(.toCenter(of: view, offset: .equal(to: FHConvenienceAnchors.O
 ```swift
 subview.constraint(.size(.equal(to: CGSize(width: 0, height: 0)))
 ```
+
+<br>
 
 Constraint creation (but not activation) method:
 ```swift
