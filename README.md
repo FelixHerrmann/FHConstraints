@@ -77,6 +77,11 @@ subview.constraint(.toCenter(of: view, offset: .equal(to: FHConvenienceAnchors.O
 subview.constraint(.size(.equal(to: CGSize(width: 0, height: 0)))
 ```
 
+Constraint creation (but not activation) method:
+```swift
+let leadingConstraint = subview.createConstraint(from: .leading(to: view.leadingAnchor))
+```
+
 ## License
 
 FHConstraints is available under the MIT license. See the [LICENSE](https://github.com/FelixHerrmann/FHConstraints/blob/master/LICENSE) file for more info.

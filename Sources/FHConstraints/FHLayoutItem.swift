@@ -49,7 +49,9 @@ extension FHLayoutItem {
     /// - Returns: Returns the created `NSLayoutConstraint`.
     @discardableResult public func constraint(_ anchor: FHLayoutAnchor) -> NSLayoutConstraint {
         enableAutoLayout()
-        return _createAndActivateConstraint(fromAnchor: anchor)
+        let constraint = _createConstraint(fromAnchor: anchor)
+        constraint.isActive = true
+        return constraint
     }
     
     /// Creates and activates the constraints from the `anchors` parameter.
@@ -65,125 +67,129 @@ extension FHLayoutItem {
     @discardableResult public func constraint(_ convenienceAnchors: FHConvenienceAnchors) -> [NSLayoutConstraint] {
         return convenienceAnchors._constraint(layoutItem: self)
     }
+    
+    /// Creates the constraint from the `anchor` parameter.
+    ///
+    /// This method only creates but not activtes the `NSLayoutConstraint`.
+    /// - Parameter anchor: The anchor from which the constraint should be created.
+    /// - Returns: Returns the created `NSLayoutConstraint`.
+    public func createConstraint(from anchor: FHLayoutAnchor) -> NSLayoutConstraint {
+        enableAutoLayout()
+        return _createConstraint(fromAnchor: anchor)
+    }
 }
 
 extension FHLayoutItem {
-    private func _createAndActivateConstraint(fromAnchor anchor: FHLayoutAnchor) -> NSLayoutConstraint {
-        let constraint: NSLayoutConstraint
-        
+    private func _createConstraint(fromAnchor anchor: FHLayoutAnchor) -> NSLayoutConstraint {
         switch anchor {
         case .leading(to: let xAxisAnchor, let constantType):
             switch constantType {
             case .equal(to: let constant):
-                constraint = leadingAnchor.constraint(equalTo: xAxisAnchor, constant: constant)
+                return leadingAnchor.constraint(equalTo: xAxisAnchor, constant: constant)
             case .lessThanOrEqual(to: let constant):
-                constraint = leadingAnchor.constraint(lessThanOrEqualTo: xAxisAnchor, constant: constant)
+                return leadingAnchor.constraint(lessThanOrEqualTo: xAxisAnchor, constant: constant)
             case .greaterThanOrEqual(to: let constant):
-                constraint = leadingAnchor.constraint(greaterThanOrEqualTo: xAxisAnchor, constant: constant)
+                return leadingAnchor.constraint(greaterThanOrEqualTo: xAxisAnchor, constant: constant)
             }
         case .trailing(to: let xAxisAnchor, let constantType):
             switch constantType {
             case .equal(to: let constant):
-                constraint = trailingAnchor.constraint(equalTo: xAxisAnchor, constant: constant)
+                return trailingAnchor.constraint(equalTo: xAxisAnchor, constant: constant)
             case .lessThanOrEqual(to: let constant):
-                constraint = trailingAnchor.constraint(lessThanOrEqualTo: xAxisAnchor, constant: constant)
+                return trailingAnchor.constraint(lessThanOrEqualTo: xAxisAnchor, constant: constant)
             case .greaterThanOrEqual(to: let constant):
-                constraint = trailingAnchor.constraint(greaterThanOrEqualTo: xAxisAnchor, constant: constant)
+                return trailingAnchor.constraint(greaterThanOrEqualTo: xAxisAnchor, constant: constant)
             }
         case .left(to: let xAxisAnchor, let constantType):
             switch constantType {
             case .equal(to: let constant):
-                constraint = leftAnchor.constraint(equalTo: xAxisAnchor, constant: constant)
+                return leftAnchor.constraint(equalTo: xAxisAnchor, constant: constant)
             case .lessThanOrEqual(to: let constant):
-                constraint = leftAnchor.constraint(lessThanOrEqualTo: xAxisAnchor, constant: constant)
+                return leftAnchor.constraint(lessThanOrEqualTo: xAxisAnchor, constant: constant)
             case .greaterThanOrEqual(to: let constant):
-                constraint = leftAnchor.constraint(greaterThanOrEqualTo: xAxisAnchor, constant: constant)
+                return leftAnchor.constraint(greaterThanOrEqualTo: xAxisAnchor, constant: constant)
             }
         case .right(to: let xAxisAnchor, let constantType):
             switch constantType {
             case .equal(to: let constant):
-                constraint = rightAnchor.constraint(equalTo: xAxisAnchor, constant: constant)
+                return rightAnchor.constraint(equalTo: xAxisAnchor, constant: constant)
             case .lessThanOrEqual(to: let constant):
-                constraint = rightAnchor.constraint(lessThanOrEqualTo: xAxisAnchor, constant: constant)
+                return rightAnchor.constraint(lessThanOrEqualTo: xAxisAnchor, constant: constant)
             case .greaterThanOrEqual(to: let constant):
-                constraint = rightAnchor.constraint(greaterThanOrEqualTo: xAxisAnchor, constant: constant)
+                return rightAnchor.constraint(greaterThanOrEqualTo: xAxisAnchor, constant: constant)
             }
         case .top(to: let yAxisAnchor, let constantType):
             switch constantType {
             case .equal(to: let constant):
-                constraint = topAnchor.constraint(equalTo: yAxisAnchor, constant: constant)
+                return topAnchor.constraint(equalTo: yAxisAnchor, constant: constant)
             case .lessThanOrEqual(to: let constant):
-                constraint = topAnchor.constraint(lessThanOrEqualTo: yAxisAnchor, constant: constant)
+                return topAnchor.constraint(lessThanOrEqualTo: yAxisAnchor, constant: constant)
             case .greaterThanOrEqual(to: let constant):
-                constraint = topAnchor.constraint(greaterThanOrEqualTo: yAxisAnchor, constant: constant)
+                return topAnchor.constraint(greaterThanOrEqualTo: yAxisAnchor, constant: constant)
             }
         case .bottom(to: let yAxisAnchor, let constantType):
             switch constantType {
             case .equal(to: let constant):
-                constraint = bottomAnchor.constraint(equalTo: yAxisAnchor, constant: constant)
+                return bottomAnchor.constraint(equalTo: yAxisAnchor, constant: constant)
             case .lessThanOrEqual(to: let constant):
-                constraint = bottomAnchor.constraint(lessThanOrEqualTo: yAxisAnchor, constant: constant)
+                return bottomAnchor.constraint(lessThanOrEqualTo: yAxisAnchor, constant: constant)
             case .greaterThanOrEqual(to: let constant):
-                constraint = bottomAnchor.constraint(greaterThanOrEqualTo: yAxisAnchor, constant: constant)
+                return bottomAnchor.constraint(greaterThanOrEqualTo: yAxisAnchor, constant: constant)
             }
         case .centerX(to: let xAxisAnchor, let constantType):
             switch constantType {
             case .equal(to: let constant):
-                constraint = centerXAnchor.constraint(equalTo: xAxisAnchor, constant: constant)
+                return centerXAnchor.constraint(equalTo: xAxisAnchor, constant: constant)
             case .lessThanOrEqual(to: let constant):
-                constraint = centerXAnchor.constraint(lessThanOrEqualTo: xAxisAnchor, constant: constant)
+                return centerXAnchor.constraint(lessThanOrEqualTo: xAxisAnchor, constant: constant)
             case .greaterThanOrEqual(to: let constant):
-                constraint = centerXAnchor.constraint(greaterThanOrEqualTo: xAxisAnchor, constant: constant)
+                return centerXAnchor.constraint(greaterThanOrEqualTo: xAxisAnchor, constant: constant)
             }
         case .centerY(to: let yAxisAnchor, let constantType):
             switch constantType {
             case .equal(to: let constant):
-                constraint = centerYAnchor.constraint(equalTo: yAxisAnchor, constant: constant)
+                return centerYAnchor.constraint(equalTo: yAxisAnchor, constant: constant)
             case .lessThanOrEqual(to: let constant):
-                constraint = centerYAnchor.constraint(lessThanOrEqualTo: yAxisAnchor, constant: constant)
+                return centerYAnchor.constraint(lessThanOrEqualTo: yAxisAnchor, constant: constant)
             case .greaterThanOrEqual(to: let constant):
-                constraint = centerYAnchor.constraint(greaterThanOrEqualTo: yAxisAnchor, constant: constant)
+                return centerYAnchor.constraint(greaterThanOrEqualTo: yAxisAnchor, constant: constant)
             }
         case .width(to: let dimension, let constantType):
             switch constantType {
             case .equal(to: let dimensionConstant):
-                constraint = widthAnchor.constraint(equalTo: dimension, multiplier: dimensionConstant.multiplier, constant: dimensionConstant.constant)
+                return widthAnchor.constraint(equalTo: dimension, multiplier: dimensionConstant.multiplier, constant: dimensionConstant.constant)
             case .lessThanOrEqual(to: let dimensionConstant):
-                constraint = widthAnchor.constraint(lessThanOrEqualTo: dimension, multiplier: dimensionConstant.multiplier, constant: dimensionConstant.constant)
+                return widthAnchor.constraint(lessThanOrEqualTo: dimension, multiplier: dimensionConstant.multiplier, constant: dimensionConstant.constant)
             case .greaterThanOrEqual(to: let dimensionConstant):
-                constraint = widthAnchor.constraint(greaterThanOrEqualTo: dimension, multiplier: dimensionConstant.multiplier, constant: dimensionConstant.constant)
+                return widthAnchor.constraint(greaterThanOrEqualTo: dimension, multiplier: dimensionConstant.multiplier, constant: dimensionConstant.constant)
             }
         case .widthConstant(let constantType):
             switch constantType {
             case .equal(to: let constant):
-                constraint = widthAnchor.constraint(equalToConstant: constant)
+                return widthAnchor.constraint(equalToConstant: constant)
             case .lessThanOrEqual(to: let constant):
-                constraint = widthAnchor.constraint(lessThanOrEqualToConstant: constant)
+                return widthAnchor.constraint(lessThanOrEqualToConstant: constant)
             case .greaterThanOrEqual(to: let constant):
-                constraint = widthAnchor.constraint(greaterThanOrEqualToConstant: constant)
+                return widthAnchor.constraint(greaterThanOrEqualToConstant: constant)
             }
         case .height(to: let dimension, let constantType):
         switch constantType {
         case .equal(to: let dimensionConstant):
-            constraint = heightAnchor.constraint(equalTo: dimension, multiplier: dimensionConstant.multiplier, constant: dimensionConstant.constant)
+            return heightAnchor.constraint(equalTo: dimension, multiplier: dimensionConstant.multiplier, constant: dimensionConstant.constant)
         case .lessThanOrEqual(to: let dimensionConstant):
-            constraint = heightAnchor.constraint(lessThanOrEqualTo: dimension, multiplier: dimensionConstant.multiplier, constant: dimensionConstant.constant)
+            return heightAnchor.constraint(lessThanOrEqualTo: dimension, multiplier: dimensionConstant.multiplier, constant: dimensionConstant.constant)
         case .greaterThanOrEqual(to: let dimensionConstant):
-            constraint = heightAnchor.constraint(greaterThanOrEqualTo: dimension, multiplier: dimensionConstant.multiplier, constant: dimensionConstant.constant)
+            return heightAnchor.constraint(greaterThanOrEqualTo: dimension, multiplier: dimensionConstant.multiplier, constant: dimensionConstant.constant)
         }
         case .heightConstant(let constantType):
             switch constantType {
             case .equal(to: let constant):
-                constraint = heightAnchor.constraint(equalToConstant: constant)
+                return heightAnchor.constraint(equalToConstant: constant)
             case .lessThanOrEqual(to: let constant):
-                constraint = heightAnchor.constraint(lessThanOrEqualToConstant: constant)
+                return heightAnchor.constraint(lessThanOrEqualToConstant: constant)
             case .greaterThanOrEqual(to: let constant):
-                constraint = heightAnchor.constraint(greaterThanOrEqualToConstant: constant)
+                return heightAnchor.constraint(greaterThanOrEqualToConstant: constant)
             }
         }
-        
-        constraint.isActive = true
-        
-        return constraint
     }
 }
