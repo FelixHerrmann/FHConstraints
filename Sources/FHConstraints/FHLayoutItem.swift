@@ -24,6 +24,10 @@ extension NSView: FHLayoutItem {
     }
 }
 
+extension NSLayoutGuide: FHLayoutItem {
+    public func enableAutoLayout() { }
+}
+
 #endif
 
 /// FHAutoLayout protocol
