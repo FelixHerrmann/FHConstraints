@@ -7,6 +7,7 @@ import AppKit
 #endif
 
 final class FHConstraintsTests: XCTestCase {
+    
     func testView() {
         #if canImport(UIKit)
         let view = UIView()
@@ -46,9 +47,4 @@ final class FHConstraintsTests: XCTestCase {
         
         #endif
     }
-
-    static var allTests = [
-        ("testView", testView),
-        ("testLayoutGuide", testLayoutGuide)
-    ]
 }
