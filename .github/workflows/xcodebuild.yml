@@ -18,6 +18,16 @@ jobs:
       - name: Run macOS tests
         run: xcodebuild -scheme FHConstraints test
   
+  build-macos-catalyst:
+    runs-on: macos-latest
+    
+    steps:
+      - uses: actions/checkout@v2
+      - name: Build macOS
+        run: xcodebuild -scheme FHConstraints -destination 'variant=Mac Catalyst'
+      - name: Run macOS tests
+        run: xcodebuild -scheme FHConstraints -destination 'variant=Mac Catalyst' test
+  
   build-ios:
     runs-on: macos-latest
     
