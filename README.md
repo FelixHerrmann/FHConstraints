@@ -4,7 +4,7 @@
 [![License](https://img.shields.io/github/license/FelixHerrmann/FHConstraints)](https://github.com/FelixHerrmann/FHConstraints/blob/master/LICENSE)
 [![Tweet](https://img.shields.io/twitter/url?style=social&url=https%3A%2F%2Fgithub.com%2FFelixHerrmann%2FFHConstraints)](https://twitter.com/intent/tweet?text=Wow:&url=https%3A%2F%2Fgithub.com%2FFelixHerrmann%2FFHConstraints)
 
-FHConstraints is an extension for the UIView class with usefull constraint methods.
+FHConstraints is an extension for the UIView class with useful constraint methods.
 Theses methods simplify the build-in constraint methods.
 
 ## Requirements
