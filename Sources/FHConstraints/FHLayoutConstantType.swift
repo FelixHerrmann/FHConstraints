@@ -1,6 +1,7 @@
 
 /// FHLayoutConstantType enum
 public enum FHLayoutConstantType<T> {
+    
     /// Constraints the layout item exactly to the associated value.
     case equal(to: T)
     

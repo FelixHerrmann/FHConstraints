@@ -6,6 +6,7 @@ import AppKit
 
 /// FHConvenience Anchors
 public enum FHConvenienceAnchors {
+    
     /// Constraints the layout item inside of the parsed layout item with optional insets.
     ///
     /// The returned constraint order is: [leading, top, trailing, bottom]
@@ -37,6 +38,7 @@ extension FHConvenienceAnchors {
 }
 
 extension FHConvenienceAnchors {
+    
     internal func _constraint(layoutItem: FHLayoutItem) -> [NSLayoutConstraint] {
         switch self {
         case .inside(of: let superLayoutItem, insets: let insetsType):

@@ -48,6 +48,7 @@ public protocol FHLayoutItem {
 }
 
 extension FHLayoutItem {
+    
     /// Creates and activates the constraint from the `anchor` parameter.
     /// - Parameter anchor: The anchor from which the constraint should be created.
     /// - Returns: Returns the created `NSLayoutConstraint`.
@@ -62,7 +63,7 @@ extension FHLayoutItem {
     /// - Parameter anchors: The array of anchors from which the constraints should be created.
     /// - Returns: Returns the created `NSLayoutConstraint`s. The order matches the anchors order.
     @discardableResult public func constraint(_ anchors: [FHLayoutAnchor]) -> [NSLayoutConstraint] {
-        return anchors.map({ constraint($0) })
+        return anchors.map { constraint($0) }
     }
     
     /// Creates and activates the from the `convenienceAnchors` parameter defined constraints.
@@ -84,6 +85,7 @@ extension FHLayoutItem {
 }
 
 extension FHLayoutItem {
+    
     private func _createConstraint(fromAnchor anchor: FHLayoutAnchor) -> NSLayoutConstraint {
         switch anchor {
         case .leading(to: let xAxisAnchor, let constantType):
