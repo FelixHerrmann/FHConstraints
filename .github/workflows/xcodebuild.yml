@@ -14,9 +14,9 @@ jobs:
     steps:
       - uses: actions/checkout@v2
       - name: Build macOS
-        run: xcodebuild -scheme FHConstraints
+        run: xcodebuild -scheme FHConstraints -destination 'platform=macOS'
       - name: Run macOS tests
-        run: xcodebuild -scheme FHConstraints test
+        run: xcodebuild -scheme FHConstraints -destination 'platform=macOS' test
   
   build-macos-catalyst:
     runs-on: macos-latest
