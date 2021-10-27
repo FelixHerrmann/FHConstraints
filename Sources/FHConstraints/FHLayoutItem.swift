@@ -67,7 +67,7 @@ extension FHLayoutItem {
     }
     
     /// Creates and activates the from the `convenienceAnchors` parameter defined constraints.
-    /// - Parameter convenienceAnchors: The convenciene anchor type.
+    /// - Parameter convenienceAnchors: The convenience anchor type.
     /// - Returns: Returns the created `NSLayoutConstraint`s.
     @discardableResult public func constraint(_ convenienceAnchors: FHConvenienceAnchors) -> [NSLayoutConstraint] {
         return convenienceAnchors._constraint(layoutItem: self)
@@ -75,7 +75,7 @@ extension FHLayoutItem {
     
     /// Creates the constraint from the `anchor` parameter.
     ///
-    /// This method only creates but not activtes the `NSLayoutConstraint`.
+    /// This method only creates but not activates the `NSLayoutConstraint`.
     /// - Parameter anchor: The anchor from which the constraint should be created.
     /// - Returns: Returns the created `NSLayoutConstraint`.
     public func createConstraint(from anchor: FHLayoutAnchor) -> NSLayoutConstraint {
